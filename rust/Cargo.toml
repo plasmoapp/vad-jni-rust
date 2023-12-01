@@ -1,0 +1,20 @@
+[package]
+name = "vad-jni-rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+eyre = "0.6.8"
+jni = "0.21.1"
+webrtc-vad = "0.4.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+# https://github.com/johnthagen/min-sized-rust
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
